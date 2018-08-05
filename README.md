@@ -2,7 +2,7 @@
 Complete sample project with spring cloud using cloud config, eureka, zuul, feign, hystrix and turbine
 
 ## A sample ready to use project with all basic configuration for -
-    1.    Spring cloud config (taking out putting all the properties file at the same location)
+    1.    Spring cloud config (taking out and putting all the properties file at the same location)
     2.    Eureka discovery enabled to maintain scaled up instances
     3.    API gateways with zuul to support routing to different microservice
     4.    Use of feign client to call different micro service wherever necessary
@@ -63,7 +63,9 @@ Complete sample project with spring cloud using cloud config, eureka, zuul, feig
  ## Flow
  
         UI/web --> pet-api --zuul--> cat and dog --feign--> pet-food
- 
+			|_____________|_______|________________|
+					   |
+					pet-eureka	
   ### Zuul
   
    API gateway is the interface for web servers or browser. API gateway is running on 8080 and through API gateway all other services can be called.
@@ -89,7 +91,7 @@ Complete sample project with spring cloud using cloud config, eureka, zuul, feig
    
    To test it, we can take down the pet-food service and try to make the call to http://localhost:8080/app/cat/food, it should show me the below message
    
-      food details is not available for dogs at the moment! try again later.
+      food details is not available for cats at the moment! try again later.
   
   ### Hystrix dashboard with turbine
   
@@ -98,3 +100,12 @@ Complete sample project with spring cloud using cloud config, eureka, zuul, feig
    To get the dashboard (`@EanbleHystrixDashboard`) make a call to http://localhost:8087/hystrix/
       
    You should see the dashboard, in the stream put the value http://localhost:8087/turbine.stream and submit that, it should start monitoring and you should watch different services wuth chart and it should show the real time data when you try to make api calls of cat and dog.
+
+   A particular service metrics can be fetched by the call to the service for ex. - http://localhost:8080/actuator/hystrix.stream 
+
+ ## APIs
+
+     GET  /app/cat/sound
+     GET  /app/cat/food
+     GET  /app/dog/sound
+     GET  /app/dog/food	
