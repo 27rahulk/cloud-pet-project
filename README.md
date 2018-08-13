@@ -108,4 +108,6 @@ Complete sample project with spring cloud using cloud config, eureka, zuul, feig
      GET  /app/cat/sound
      GET  /app/cat/food
      GET  /app/dog/sound
-     GET  /app/dog/food	
+     GET  /app/dog/food
+ 
+ [more info](https://medium.com/@27.rahul.k/build-a-sample-project-with-spring-cloud-using-cloud-config-eureka-zuul-feign-hystrix-and-378b16bcb7c3)
